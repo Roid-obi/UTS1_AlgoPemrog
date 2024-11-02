@@ -1,7 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
 
-
 // 3
 // Dengan menggunakan fungsi random di java buatlah permainan suit (semut, orang, dan gajah) yang menentukan kita menang, seri atau kalah jika di adu dengan komputer. 
 // misal kita memilih semut maka komputer akan merandom tiga kemungkinan jika komputer keluar gajah maka kita menang, jika komputer keluar semut maka seri dan jika komputer keluar orang maka kita kalah.
@@ -10,6 +9,9 @@ public class SuitGame {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Random rand = new Random();
+
+        // Inisialisasi
+        int pilihanPemain, pilihanKomputer;
         
         // Menampilkan pilihan untuk pemain
         System.out.println("Pilih salah satu:");
@@ -18,7 +20,7 @@ public class SuitGame {
         System.out.println("3. Gajah");
         System.out.print("Masukkan pilihanmu (1-3): ");
         
-        int pilihanPemain = input.nextInt();
+        pilihanPemain = input.nextInt();
         
         // Validasi input pemain
         if (pilihanPemain < 1 || pilihanPemain > 3) {
@@ -28,7 +30,7 @@ public class SuitGame {
         }
         
         // Mendapatkan pilihan komputer secara acak
-        int pilihanKomputer = rand.nextInt(3) + 1;
+        pilihanKomputer = rand.nextInt(3) + 1;
         
         // Menampilkan pilihan pemain dan komputer
         System.out.println("Pilihanmu: " + getNamaPilihan(pilihanPemain));

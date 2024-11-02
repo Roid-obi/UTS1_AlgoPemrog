@@ -11,13 +11,23 @@ import java.util.Scanner;
 public class GajiBersih {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+
+        // Inisialisasi
+        int gajiPokok = 0;
+        int tunjanganKeluarga = 0;
+        int tunjanganAnak = 0;
+        double pajak = 0;
+        double gajiBersih = 0;
+        int gajiKotor = 0;
+        int golongan;
+        int jumlahAnak;
+        char statusKeluarga;
         
         // Input golongan karyawan
         System.out.print("Masukkan golongan karyawan (1/2/3): ");
-        int golongan = input.nextInt();
+        golongan = input.nextInt();
         
         // Menentukan gaji pokok berdasarkan golongan
-        int gajiPokok;
         switch (golongan) {
             case 1:
                 gajiPokok = 1000000;
@@ -36,10 +46,7 @@ public class GajiBersih {
         
         // Input status keluarga
         System.out.print("Apakah karyawan sudah berkeluarga? (y/n): ");
-        char statusKeluarga = input.next().charAt(0);
-        
-        int tunjanganKeluarga = 0;
-        int tunjanganAnak = 0;
+        statusKeluarga = input.next().charAt(0);
         
         if (statusKeluarga == 'y' || statusKeluarga == 'Y') {
             // Tunjangan keluarga
@@ -47,7 +54,7 @@ public class GajiBersih {
             
             // Input jumlah anak (maksimal 3)
             System.out.print("Masukkan jumlah anak (maksimal 3): ");
-            int jumlahAnak = input.nextInt();
+            jumlahAnak = input.nextInt();
             if (jumlahAnak > 3) jumlahAnak = 3;
             
             // Tunjangan anak
@@ -55,16 +62,15 @@ public class GajiBersih {
         }
         
         // Menghitung gaji kotor
-        int gajiKotor = gajiPokok + tunjanganKeluarga + tunjanganAnak;
+        gajiKotor = gajiPokok + tunjanganKeluarga + tunjanganAnak;
         
         // Menghitung pajak jika golongan 3
-        double pajak = 0;
         if (golongan == 3) {
             pajak = 0.02 * gajiKotor;
         }
         
         // Menghitung gaji bersih
-        double gajiBersih = gajiKotor - pajak;
+        gajiBersih = gajiKotor - pajak;
         
         // Output hasil perhitungan
         System.out.println("Gaji Pokok: Rp" + gajiPokok);

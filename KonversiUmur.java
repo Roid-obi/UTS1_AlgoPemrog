@@ -1,40 +1,10 @@
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Scanner;
 
 // 1
 // Menentukan konversi umur dalam tahun, bulan dan hari dengan inputan tanggal lahir dan tanggal sekarang. 
 // dengan asumsi bahwa 1 bulan adalah 30 hari dan 1 tahun adalah 12 bulan.
-
-// Psedocode
-// Start
-
-    //     int hariLahir, bulanLahir, tahunLahir
-    //     int hariSekarang, bulanSekarang, tahunSekarang
-    //     int hari, bulan, tahun
-
-    //     Input hariLahir
-    //     Input bulanLahir
-    //     Input tahunLahir
-    //     Input hariSekarang
-    //     Input bulanSekarang
-    //     Input tahunSekarang
-
-    //     hari = hariSekarang - hariLahir
-    //     bulan = bulanSekarang - bulanLahir
-    //     tahun = tahunSekarang - tahunLahir
-
-    //     If hari < 0 Then
-    //         hari = hari + 30       // Tambahkan 30 hari
-    //         bulan = bulan - 1      // Kurangi 1 bulan
-    //     End If
-
-    //     If bulan < 0 Then
-    //         bulan = bulan + 12      // Tambahkan 12 bulan
-    //         tahun = tahun - 1       // Kurangi 1 tahun
-    //     End If
-
-    //     Output "Umur: " + tahun + " tahun, " + bulan + " bulan, dan " + hari + " hari."
-
-// End
 
 public class KonversiUmur {
     public static void main(String[] args) {
@@ -44,41 +14,30 @@ public class KonversiUmur {
         int hariLahir, bulanLahir, tahunLahir;
         int hariSekarang, bulanSekarang, tahunSekarang;
         
-        // Input tanggal lahir
-        System.out.print("Masukkan tanggal lahir (hari): ");
-        hariLahir = input.nextInt();
-        System.out.print("Masukkan bulan lahir: ");
-        bulanLahir = input.nextInt();
-        System.out.print("Masukkan tahun lahir: ");
-        tahunLahir = input.nextInt();
+        // Input tanggal lahir dalam format hari/bulan/tahun
+        System.out.print("Masukkan tanggal lahir (format: hari/bulan/tahun): ");
+        String[] tanggalLahirInput = input.nextLine().split("/");
+        hariLahir = Integer.parseInt(tanggalLahirInput[0]);
+        bulanLahir = Integer.parseInt(tanggalLahirInput[1]);
+        tahunLahir = Integer.parseInt(tanggalLahirInput[2]);
         
-        // Input tanggal sekarang
-        System.out.print("Masukkan tanggal sekarang (hari): ");
-        hariSekarang = input.nextInt();
-        System.out.print("Masukkan bulan sekarang: ");
-        bulanSekarang = input.nextInt();
-        System.out.print("Masukkan tahun sekarang: ");
-        tahunSekarang = input.nextInt();
+        // Input tanggal sekarang dalam format hari/bulan/tahun
+        System.out.print("Masukkan tanggal sekarang (format: hari/bulan/tahun): ");
+        String[] tanggalSekarangInput = input.nextLine().split("/");
+        hariSekarang = Integer.parseInt(tanggalSekarangInput[0]);
+        bulanSekarang = Integer.parseInt(tanggalSekarangInput[1]);
+        tahunSekarang = Integer.parseInt(tanggalSekarangInput[2]);
         
-        // Hitung selisih hari, bulan, dan tahun
-        int hari = hariSekarang - hariLahir;
-        int bulan = bulanSekarang - bulanLahir;
-        int tahun = tahunSekarang - tahunLahir;
+        // Buat objek LocalDate untuk tanggal lahir dan tanggal sekarang
+        LocalDate tanggalLahir = LocalDate.of(tahunLahir, bulanLahir, hariLahir);
+        LocalDate tanggalSekarang = LocalDate.of(tahunSekarang, bulanSekarang, hariSekarang);
         
-        // Sesuaikan jika hari negatif
-        if (hari < 0) {
-            hari += 30;    // 1 bulan = 30 hari
-            bulan--;
-        }
-        
-        // Sesuaikan jika bulan negatif
-        if (bulan < 0) {
-            bulan += 12;   // 1 tahun = 12 bulan
-            tahun--;
-        }
+        // Hitung selisih umur menggunakan Period
+        Period umur = Period.between(tanggalLahir, tanggalSekarang);
         
         // Output hasil konversi umur
-        System.out.println("Umur: " + tahun + " tahun, " + bulan + " bulan, dan " + hari + " hari.");
+        System.out.println("Umur: " + umur.getYears() + " tahun, " 
+                + umur.getMonths() + " bulan, dan " + umur.getDays() + " hari.");
         
         input.close();
     }
