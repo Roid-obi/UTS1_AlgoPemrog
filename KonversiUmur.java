@@ -1,6 +1,7 @@
+import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Scanner;
+
 
 // 1
 // Menentukan konversi umur dalam tahun, bulan dan hari dengan inputan tanggal lahir dan tanggal sekarang. 

@@ -19,8 +19,7 @@ public class GajiBersih {
         double pajak = 0;
         double gajiBersih = 0;
         int gajiKotor = 0;
-        int golongan;
-        int jumlahAnak;
+        int golongan, jumlahAnak;
         char statusKeluarga;
         
         // Input golongan karyawan
