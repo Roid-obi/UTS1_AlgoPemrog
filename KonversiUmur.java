@@ -2,7 +2,6 @@ import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.Period;
 
-
 // 1
 // Menentukan konversi umur dalam tahun, bulan dan hari dengan inputan tanggal lahir dan tanggal sekarang. 
 // dengan asumsi bahwa 1 bulan adalah 30 hari dan 1 tahun adalah 12 bulan.

@@ -3,7 +3,7 @@ import java.util.Scanner;
 // 2
 // Menentukan sebuah segitiga apakah bukan segitiga, sebuah segitiga sama sisi, sama kaki, siku-siku atau sebarang dengan inputan 3 sisinya.
 
-public class KlasifikasiSegitiga {
+public class KlarifikasiSegitiga {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
